@@ -1,0 +1,22 @@
+{
+    "name": "app-starter",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "Full-stack app skeleton: JWT auth, role-based users, resource-level access grants, help & support, audit log",
+    "private": true,
+    "scripts": {
+        "install:all": "npm --prefix server install && npm --prefix client install --include=dev",
+        "build": "npm --prefix client run build",
+        "start": "npm --prefix server start",
+        "dev:server": "npm --prefix server run dev",
+        "dev:client": "npm --prefix client run dev",
+        "clean": "cd client && rm -rf dist node_modules && cd ../server && rm -rf node_modules"
+    },
+    "keywords": [
+        "starter",
+        "template",
+        "auth",
+        "rbac"
+    ],
+    "license": "UNLICENSED"
+}

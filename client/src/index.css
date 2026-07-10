@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* Professional Color Palette - Corporate Blue Theme (swap for your brand) */
+  --color-primary: 210 72% 39%;
+  /* Main brand color */
+  --color-primary-dark: 210 75% 28%;
+  /* Darker shade for hover states */
+  --color-primary-light: 210 70% 94%;
+  /* Light tint for backgrounds */
+
+  --color-accent: 210 72% 50%;
+  /* Lighter Blue - Accent color */
+  --color-accent-light: 210 60% 94%;
+  /* Light blue for highlights */
+
+  --color-surface: 220 14% 96%;
+  /* Light gray surface */
+  --color-surface-elevated: 0 0% 100%;
+  /* White for cards */
+
+  --color-text-primary: 220 14% 20%;
+  /* Dark slate for headings */
+  --color-text-secondary: 220 9% 46%;
+  /* Medium gray for body text */
+  --color-text-muted: 220 9% 64%;
+  /* Light gray for captions */
+
+  --color-border: 220 13% 91%;
+  /* Subtle borders */
+  --color-border-strong: 220 13% 85%;
+  /* Stronger borders */
+
+  /* Status colors - muted, professional */
+  --color-success: 160 60% 40%;
+  --color-success-light: 160 50% 94%;
+  --color-warning: 38 92% 50%;
+  --color-warning-light: 38 80% 94%;
+  --color-danger: 0 65% 51%;
+  --color-danger-light: 0 50% 95%;
+
+  /* Sidebar dimensions */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
+}
+
+body {
+  background: hsl(var(--color-surface));
+  min-height: 100vh;
+  color: hsl(var(--color-text-primary));
+}
+
+/* Professional card utilities */
+.glass {
+  background: hsl(var(--color-surface-elevated));
+  border: 1px solid hsl(var(--color-border));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: hsl(var(--color-surface-elevated));
+  border: 1px solid hsl(var(--color-border));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  border-color: hsl(var(--color-border-strong));
+}
+
+/* Professional button styles */
+.btn-primary {
+  background: hsl(var(--color-primary));
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: hsl(var(--color-primary-dark));
+}
+
+.btn-secondary {
+  background: hsl(var(--color-surface));
+  color: hsl(var(--color-text-primary));
+  border: 1px solid hsl(var(--color-border-strong));
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--color-border));
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: linear-gradient(180deg, hsl(220 20% 22%) 0%, hsl(220 24% 18%) 100%);
+  color: white;
+  width: var(--sidebar-width);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-link {
+  color: hsl(220 20% 75%);
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.sidebar-link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border-left: 3px solid hsl(var(--color-accent));
+}
+
+/* Clean stat card - borderless with subtle shadow */
+.stat-card {
+  background: hsl(var(--color-surface-elevated));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Slide-in animation for sidebar panels */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.25s ease-out forwards;
+}
+
+/* Submenu animation */
+@keyframes submenu-expand {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+.submenu-enter {
+  animation: submenu-expand 0.2s ease-out forwards;
+  overflow: hidden;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Chart color overrides for professional look */
+.recharts-default-tooltip {
+  background: hsl(var(--color-surface-elevated)) !important;
+  border: 1px solid hsl(var(--color-border)) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove rounded corners for more professional look */
+.rounded-xl {
+  border-radius: 8px;
+}
+
+.rounded-lg {
+  border-radius: 6px;
+}
