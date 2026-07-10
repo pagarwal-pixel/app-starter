@@ -16,9 +16,12 @@ Full-stack skeleton for internal tools and client-facing dashboards. Clone it, r
 ## Quick start
 
 ```bash
-# 1. Create a PostgreSQL database
-#    (any name; set it in server/.env)
+# 0. Prereqs: Node 20+ and PostgreSQL running locally
+
+# 1. Create a PostgreSQL database (any name; set it in server/.env)
 createdb app_starter_dev
+#    If createdb is not on PATH (common on Windows), use psql instead:
+#    psql -U postgres -c "CREATE DATABASE app_starter_dev"
 
 # 2. Configure the server
 cp server/.env.example server/.env
@@ -37,12 +40,13 @@ Log in with username `admin` and your `ADMIN_PASSWORD`. After first boot, set `A
 ## Starting a new project from this template
 
 1. Copy this folder (or use "Use this template" on GitHub / `npx degit you/app-starter my-app`)
-2. Rename: `APP_NAME` in `client/src/config.ts`, `<title>` in `client/index.html`, `name` in the three package.json files, `APP_NAME` in `server/.env`
-3. Replace the favicon in `client/public/`
-4. Build your domain:
+2. Clean the copy: delete `server/.env` if it came along (it holds the previous project's local secrets - recreate it from `.env.example`), delete any `node_modules`/`dist`, then `rm -rf .git && git init` for a fresh history
+3. Rename: `APP_NAME` in `client/src/config.ts`, `<title>` in `client/index.html`, `name` in the three package.json files, `APP_NAME` in `server/.env`
+4. Replace the favicon in `client/public/`
+5. Build your domain:
    - **Server**: replace the placeholder `resources` table (`server/db/postgres.js`) and routes (`server/routes/resources.js`) with your real entities. Keep the `resource_access` grant pattern for external users - `checkResourceAccess` in `server/middleware/auth.js` shows how.
    - **Client**: replace `components/Home.tsx`, add routes in `App.tsx` (wrap write pages in `WriteAccessRoute`), register nav items in `src/nav.tsx`, add API calls in `src/api.ts`.
-5. Adjust the brand palette in `client/src/index.css` (CSS variables at the top)
+6. Adjust the brand palette in `client/src/index.css` (CSS variables at the top)
 
 ## Layout
 
