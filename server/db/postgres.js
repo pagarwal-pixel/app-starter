@@ -12,7 +12,7 @@
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 
-// Prefer a single DATABASE_URL when available (Railway etc.); fall back to
+// Prefer a single DATABASE_URL when available; fall back to
 // individual env vars for local dev.
 const poolConfig = process.env.DATABASE_URL
     ? {

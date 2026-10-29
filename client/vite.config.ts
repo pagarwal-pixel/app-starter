@@ -14,9 +14,8 @@ function getGitHash(): string {
     if (hash && /^[0-9a-f]{7,}/i.test(hash)) return hash
   } catch { /* not available */ }
 
-  // Fallback: Railway / CI env vars
+  // Fallback: CI env vars (AWS CodeBuild etc.)
   const sha =
-    process.env.RAILWAY_GIT_COMMIT_SHA ||
     process.env.GITHUB_SHA ||
     process.env.GIT_COMMIT ||
     process.env.CI_COMMIT_SHA ||
